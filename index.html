@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti 🌻</title>
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+  body{
+    overflow:hidden;
+    background:linear-gradient(160deg,#fff7c7 0%,#ffe7a0 45%,#ffd36b 100%);
+    color:#5d4310;
+  }
+  .screen{
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    padding:24px;position:relative;isolation:isolate;
+  }
+  .glow{position:absolute;width:280px;height:280px;border-radius:50%;
+    background:#fff3a8;filter:blur(35px);opacity:.65;z-index:-1}
+  .card{
+    width:min(92vw,430px);padding:34px 25px 28px;text-align:center;
+    background:rgba(255,255,255,.72);backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.9);border-radius:30px;
+    box-shadow:0 20px 60px rgba(113,76,0,.18);
+    animation:appear .9s ease both;
+  }
+  h1{font-size:clamp(2rem,9vw,3.2rem);margin:8px 0 10px}
+  p{font-size:1.08rem;line-height:1.65;margin:12px 0}
+  .sub{font-size:.95rem;opacity:.75}
+  button{
+    border:0;border-radius:999px;padding:14px 24px;margin-top:18px;
+    background:#f5b800;color:white;font-weight:800;font-size:1rem;
+    box-shadow:0 8px 20px rgba(190,130,0,.25);cursor:pointer;
+    transition:.2s transform,.2s box-shadow;
+  }
+  button:active{transform:scale(.96)}
+  .hidden{display:none}
+  .message{animation:appear .7s ease both}
+  .sunflower{font-size:5rem;display:block;animation:sway 3s ease-in-out infinite}
+  .flowers{position:fixed;inset:0;pointer-events:none;z-index:-1}
+  .flower{position:absolute;font-size:2rem;animation:float linear infinite;opacity:.9}
+  .petal{position:fixed;top:-30px;font-size:1.6rem;animation:fall linear forwards;pointer-events:none}
+  .signature{margin-top:22px;font-weight:700}
+  .small{font-size:.85rem;opacity:.65;margin-top:20px}
+  @keyframes appear{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+  @keyframes sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+  @keyframes float{0%{transform:translateY(105vh) rotate(0deg)}100%{transform:translateY(-15vh) rotate(360deg)}}
+  @keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="flowers" id="flowers"></div>
+
+<main class="screen">
+  <div class="glow"></div>
+  <section class="card" id="intro">
+    <span class="sunflower">🌻</span>
+    <h1>Para ti</h1>
+    <p>Puede que hoy no haya podido darte flores en persona...</p>
+    <p class="sub">pero no quería dejar pasar el día sin darte un pequeño detalle.</p>
+    <button onclick="openGift()">Tengo algo para ti 💛</button>
+  </section>
+
+  <section class="card hidden message" id="message">
+    <span class="sunflower">🌻</span>
+    <h1>Flores amarillas para ti</h1>
+    <p>
+      Hoy no pude llegar con un ramo en las manos,
+      así que tuve que improvisar un poquito. 😅
+    </p>
+    <p>
+      No son flores de verdad, pero las hice pensando en ti.
+      Espero que al menos logren sacarte una sonrisa. 💛
+    </p>
+    <p>
+      Y bueno... quizá esta sea mi manera de decirte
+      que me gusta seguir conociéndote y que me encanta tener
+      la oportunidad de compartir momentos contigo.
+    </p>
+    <p class="signature">Feliz día de las flores amarillas 🌻</p>
+    <p class="small">Con cariño, alguien que está intentando conquistarte. 👀💛</p>
+  </section>
+</main>
+
+<script>
+function openGift(){
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('message').classList.remove('hidden');
+  for(let i=0;i<28;i++){
+    setTimeout(()=>{
+      const p=document.createElement('div');
+      p.className='petal';
+      p.textContent=Math.random()>.25?'🌻':'💛';
+      p.style.left=(Math.random()*100)+'vw';
+      p.style.animationDuration=(3+Math.random()*4)+'s';
+      p.style.fontSize=(1.2+Math.random()*1.2)+'rem';
+      document.body.appendChild(p);
+      setTimeout(()=>p.remove(),8000);
+    },i*100);
+  }
+}
+const bg=document.getElementById('flowers');
+for(let i=0;i<14;i++){
+  const f=document.createElement('div');
+  f.className='flower';
+  f.textContent='🌻';
+  f.style.left=(Math.random()*100)+'vw';
+  f.style.animationDuration=(8+Math.random()*8)+'s';
+  f.style.animationDelay=(-Math.random()*12)+'s';
+  f.style.fontSize=(1.2+Math.random()*1.5)+'rem';
+  bg.appendChild(f);
+}
+</script>
+</body>
+</html>
