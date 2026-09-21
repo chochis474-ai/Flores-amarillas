@@ -19,15 +19,11 @@ body{min-height:100vh;background:linear-gradient(to bottom,#1a1510,#0d0a07);over
 .flor-t{width:38px;height:42px;background:linear-gradient(180deg,#ffee58,#f9a825);border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;margin-bottom:-8px;position:relative;box-shadow:inset -4px -4px 0 rgba(0,0,0,.1)}
 .flor-t::before{content:'';position:absolute;width:100%;height:100%;background:inherit;border-radius:inherit;left:-10px;top:2px;opacity:.9}
 .flor-t::after{content:'';position:absolute;width:100%;height:100%;background:inherit;border-radius:inherit;right:-10px;top:2px;opacity:.9}
-
 .centro{position:fixed;z-index:10;text-align:center;top:42%;transform:translateY(-50%)}
 .titulo{font-family:'Dancing Script',cursive;font-size:3.2rem;color:#ffeb3b;text-shadow:0 0 20px rgba(255,235,59,.8),2px 2px 0 #000}
 .sub{color:#fff9c4;margin-top:8px;font-weight:300;letter-spacing:2px}
 .btn-carta{margin-top:22px;background:linear-gradient(#ffeb3b,#fbc02d);color:#3e2723;border:none;padding:14px 32px;border-radius:30px;font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 8px 20px rgba(255,235,59,.5),0 0 0 3px rgba(255,255,255,.3);transition:.3s}
 .btn-carta:hover{transform:scale(1.05)}
-.btn-carta:active{transform:scale(.95)}
-
-/* CARTA */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);z-index:20;display:none;justify-content:center;align-items:center;padding:20px}
 .overlay.activo{display:flex}
 .carta{background:#fffef7;width:100%;max-width:400px;border-radius:20px;padding:30px 28px;position:relative;box-shadow:0 20px 80px rgba(0,0,0,.6);animation:cartaPop .5s cubic-bezier(.34,1.56,.64,1);border:2px solid #ffeb3b}
@@ -38,54 +34,10 @@ body{min-height:100vh;background:linear-gradient(to bottom,#1a1510,#0d0a07);over
 .carta p{font-size:.95rem;line-height:1.7;color:#4e342e;font-weight:300;text-align:center}
 .carta b{color:#ef6c00;font-weight:600}
 .firma{margin-top:18px;text-align:center;font-size:.8rem;color:#a1887f;border-top:1px dashed #ffe082;padding-top:12px}
-.corazones{position:absolute;inset:0;pointer-events:none}
 </style>
 </head>
 <body>
 <div class="falling" id="falling"></div>
 <div class="jardin" id="jardin"></div>
-
 <div class="centro">
-<div class="titulo">Sheyla 🌻</div>
-<div class="sub">TENGO ALGO PARA TI</div>
-<button class="btn-carta" onclick="abrirCarta()">💌 Abrir carta</button>
-</div>
-
-<div class="overlay" id="overlay" onclick="if(event.target==this)cerrarCarta()">
-<div class="carta">
-<div class="cerrar" onclick="cerrarCarta()">×</div>
-<h2>Hola bella 💛</h2>
-<p>
-Yo sé que apenas nos estamos conociendo y que hoy es el día de las flores amarillas y no te pude comprar unas 🥲<br><br>
-Pero te quise hacer esta página llena de <b>flores amarillas</b> para compensar.<br><br>
-Espero y te guste y te saque una sonrisa 🌼
-</p>
-<div style="text-align:center;margin-top:15px;font-size:1.5rem">💛 🌻 💛</div>
-<div class="firma">Con mucho cariño<br>— Jordy —<br>21 de Septiembre 2026 • Día de las Flores Amarillas</div>
-</div>
-</div>
-
-<script>
-const jardin=document.getElementById('jardin');
-for(let i=0;i<14;i++){
- let t=document.createElement('div');t.className='tulipan';t.style.animationDelay=(i*.15)+'s';
- let h=90+Math.random()*60;
- t.innerHTML=`<div class="flor-t"></div><div class="tallo" style="height:${h}px"><div class="hoja"></div></div>`;
- jardin.appendChild(t);
-}
-function crearGirasol(){
- let e=document.createElement('div');e.className='girasol';
- e.textContent=Math.random()>.3?'🌻':'🌼';
- e.style.left=Math.random()*100+'vw';
- e.style.fontSize=(Math.random()*14+18)+'px';
- e.style.animationDuration=(Math.random()*3+3)+'s';
- document.getElementById('falling').appendChild(e);
- setTimeout(()=>e.remove(),6000);
-}
-setInterval(crearGirasol,180);
-for(let i=0;i<15;i++)setTimeout(crearGirasol,i*100);
-function abrirCarta(){document.getElementById('overlay').classList.add('activo');for(let i=0;i<20;i++)setTimeout(crearGirasol,i*60)}
-function cerrarCarta(){document.getElementById('overlay').classList.remove('activo')}
-</script>
-</body>
-</html>
+<div class="titulo
